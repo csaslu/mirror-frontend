@@ -1,0 +1,37 @@
+{
+  "name": "mirror-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Frontend of Lida Mirror — mirror list and content browser",
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@11.9.0",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"**/*.{vue,ts,js,json,css,md}\"",
+    "format:check": "prettier --check \"**/*.{vue,ts,js,json,css,md}\""
+  },
+  "dependencies": {
+    "nuxt": "^4.5.2",
+    "vue": "^3.5.42",
+    "vue-router": "^5.3.1"
+  },
+  "devDependencies": {
+    "@iconify-json/lucide": "^1.2.133",
+    "@nuxt/icon": "^2.5.1",
+    "@nuxtjs/color-mode": "^4.0.1",
+    "@nuxtjs/i18n": "^10.6.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3"
+  }
+}

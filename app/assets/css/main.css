@@ -1,0 +1,140 @@
+@import 'tailwindcss';
+
+/*
+ * Dark mode is driven by a class on <html> (set by @nuxtjs/color-mode), not by
+ * the media query, so the header toggle can override the system preference.
+ */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans:
+    'Inter var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+  --font-mono:
+    'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+
+  /* Brand: deep academic blue through to mirrored cyan. */
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-200: #bfdbfe;
+  --color-brand-300: #93c5fd;
+  --color-brand-400: #60a5fa;
+  --color-brand-500: #3b82f6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+  --color-brand-800: #1e40af;
+  --color-brand-900: #1e3a8a;
+  --color-brand-950: #172554;
+
+  --color-accent-400: #22d3ee;
+  --color-accent-500: #06b6d4;
+  --color-accent-600: #0891b2;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-800 antialiased;
+    @apply dark:bg-slate-950 dark:text-slate-200;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  /* Keyboard users get a visible ring everywhere; mouse users never see one. */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-500;
+  }
+
+  ::selection {
+    @apply bg-brand-500/25;
+  }
+}
+
+@layer components {
+  /* Frosted surface used by the header and by floating toolbars. */
+  .surface-blur {
+    @apply bg-white/85 backdrop-blur-md dark:bg-slate-900/85;
+  }
+
+  .card {
+    @apply rounded-2xl border border-slate-200/80 bg-white shadow-xs;
+    @apply dark:border-slate-800 dark:bg-slate-900;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1;
+    @apply text-xs font-medium whitespace-nowrap;
+  }
+
+  /*
+   * Button base. Tailwind v4 cannot @apply another custom class from the same
+   * layer, so each variant repeats the base utilities rather than extending
+   * `.btn`.
+   */
+  .btn,
+  .btn-ghost,
+  .btn-primary {
+    @apply inline-flex shrink-0 items-center justify-center gap-1.5 rounded-lg;
+    @apply px-3 py-2 text-sm font-medium transition-colors;
+    @apply disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-ghost {
+    @apply text-slate-600 hover:bg-slate-100 hover:text-slate-900;
+    @apply dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100;
+  }
+
+  .btn-primary {
+    @apply bg-brand-600 text-white hover:bg-brand-700;
+  }
+
+  .icon-btn {
+    @apply inline-flex h-9 w-9 items-center justify-center rounded-lg;
+    @apply text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900;
+    @apply dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm;
+    @apply text-slate-900 placeholder:text-slate-400;
+    @apply focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:outline-none;
+    @apply dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100;
+    @apply dark:placeholder:text-slate-500 dark:focus:border-brand-400;
+  }
+}
+
+@layer utilities {
+  /* Thin, unobtrusive scrollbars for the horizontally scrollable table. */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-slate-300) transparent;
+  }
+
+  .dark .scrollbar-thin {
+    scrollbar-color: var(--color-slate-700) transparent;
+  }
+
+  .animate-in {
+    animation: fade-up 0.35s ease-out both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-in {
+      animation: none;
+    }
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

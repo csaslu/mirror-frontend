@@ -1,0 +1,162 @@
+{
+  "site": {
+    "name": "Shanghai Lida University Open Source Mirror",
+    "shortName": "Lida Mirror",
+    "tagline": "Open source mirror service for the campus network",
+    "description": "The Shanghai Lida University open source mirror, offering accelerated, on-demand cached access to Ubuntu, Debian, PyPI, Docker and other popular open source software.",
+    "operator": "Communication and Software Association",
+    "university": "Shanghai Lida University"
+  },
+  "nav": {
+    "mirrors": "Mirrors",
+    "help": "Help",
+    "status": "Sync status",
+    "news": "News",
+    "about": "About"
+  },
+  "home": {
+    "title": "Mirror list",
+    "searchPlaceholder": "Search mirrors by name or description",
+    "searchHint": "Press / to search",
+    "searchEmpty": "No mirror matches \"{query}\"",
+    "clearSearch": "Clear search",
+    "filterAll": "All",
+    "filterByType": "Filter by category",
+    "updatedAt": "Data fetched at {time}",
+    "autoRefresh": "Auto-refreshes every {seconds}s",
+    "refreshNow": "Refresh now",
+    "showingCount": "Showing {shown} of {total} mirrors",
+    "refreshing": "Refreshing"
+  },
+  "table": {
+    "name": "Name",
+    "description": "Description",
+    "category": "Category",
+    "size": "Size",
+    "lastSync": "Last sync",
+    "status": "Sync status",
+    "actions": "Actions",
+    "expand": "Show details",
+    "collapse": "Hide details"
+  },
+  "mirror": {
+    "browse": "Browse files",
+    "copyUrl": "Copy URL",
+    "copied": "Copied",
+    "copyFailed": "Copy failed, please copy manually",
+    "openSource": "Visit upstream",
+    "key": "Directory",
+    "source": "Upstream",
+    "size": "Disk usage",
+    "lastSync": "Last sync",
+    "sizeUnknown": "Unknown",
+    "syncUnknown": "No data yet"
+  },
+  "browser": {
+    "title": "Browse files",
+    "entries": "{count} entries",
+    "empty": "This directory is empty",
+    "parent": "Parent directory",
+    "upstream": "Original upstream page",
+    "fetchedAt": "Read at {time}",
+    "copyLink": "Copy link",
+    "copied": "Link copied",
+    "openFile": "Download file",
+    "sortHint": "Select a column header to sort",
+    "unavailableTitle": "The upstream did not return a readable directory listing",
+    "unavailableHint": "This path may be a file, listing may be disabled upstream, or the listing format is not supported yet. You can open the original upstream page instead.",
+    "backToList": "Back to mirror list",
+    "root": "root",
+    "syncingHint": "Upstream is syncing; contents may be incomplete",
+    "fileCount": "files",
+    "directoryCount": "directories",
+    "sortName": "Name",
+    "sortSize": "Size",
+    "sortTime": "Modified",
+    "parser": "Parsed by",
+    "enterDirectory": "Open directory",
+    "loading": "Loading directory"
+  },
+  "fileTable": {
+    "name": "Name",
+    "size": "Size",
+    "modified": "Modified",
+    "kind": "Kind",
+    "directory": "Directory",
+    "file": "File"
+  },
+  "status": {
+    "label": "Sync status",
+    "success": "Up to date",
+    "syncing": "Syncing",
+    "failed": "Failed",
+    "paused": "Paused",
+    "pre-syncing": "Pre-syncing",
+    "disabled": "Disabled",
+    "unknown": "Unknown",
+    "successHint": "Upstream finished its most recent sync",
+    "syncingHint": "Upstream is syncing this mirror, data may be incomplete",
+    "failedHint": "Upstream's last sync failed and will be retried",
+    "pausedHint": "Upstream paused syncing this mirror",
+    "pre-syncingHint": "Upstream is pre-syncing this mirror",
+    "disabledHint": "Upstream disabled this mirror",
+    "unknownHint": "Upstream status is currently unavailable for this mirror"
+  },
+  "type": {
+    "label": "Category",
+    "reverse_proxy": "Reverse proxy",
+    "rsync": "rsync",
+    "http": "HTTP",
+    "https": "HTTPS",
+    "ftp": "FTP",
+    "s3": "Object storage",
+    "reverse_proxyHint": "Cached on demand: fetched from upstream on first access",
+    "rsyncHint": "Synced over the rsync protocol",
+    "httpHint": "Served over HTTP",
+    "httpsHint": "Served over HTTPS",
+    "ftpHint": "Served over FTP",
+    "s3Hint": "Served from object storage"
+  },
+  "state": {
+    "loading": "Loading mirror list",
+    "error": "Failed to load the mirror list",
+    "errorHint": "Cannot reach the mirror server. Please try again shortly.",
+    "retry": "Retry",
+    "empty": "No mirrors configured",
+    "emptyHint": "No mirror has been added by the administrators yet."
+  },
+  "settings": {
+    "languageSwitch": "Change language",
+    "theme": "Theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeSystem": "System",
+    "language": "Language"
+  },
+  "a11y": {
+    "skipToContent": "Skip to main content",
+    "sortBy": "Sort by {column}",
+    "statusDot": "Status indicator"
+  },
+  "time": {
+    "justNow": "just now",
+    "secondsAgo": "{n} seconds ago",
+    "minutesAgo": "{n} minutes ago",
+    "hoursAgo": "{n} hours ago",
+    "daysAgo": "{n} days ago",
+    "monthsAgo": "{n} months ago",
+    "yearsAgo": "{n} years ago",
+    "never": "Never synced",
+    "unknown": "Unknown",
+    "absoluteHint": "{time}"
+  },
+  "size": {
+    "bytes": "{n} B",
+    "kb": "{n} KB",
+    "mb": "{n} MB",
+    "gb": "{n} GB",
+    "tb": "{n} TB",
+    "pb": "{n} PB",
+    "unknown": "Unknown"
+  }
+}

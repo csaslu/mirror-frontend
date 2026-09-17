@@ -1,0 +1,19 @@
+# This file keeps pnpm treating mirror-frontend as its own install root.
+#
+# Without it, pnpm walks up the directory tree, finds a pnpm-workspace.yaml in
+# the user's home directory, and silently treats this package as an empty member
+# of that workspace: `pnpm install` then reports "Already up to date" and never
+# creates node_modules. Declaring the workspace here pins the root and the
+# lockfile to this directory.
+packages:
+  - '.'
+
+# esbuild ships its platform binary through a postinstall script and Vite/Nuxt
+# cannot build without it. Everything else stays unapproved by default.
+allowBuilds:
+  esbuild: true
+
+# Keep the newest icon collection eligible for install while the machine applies
+# a minimum release age to the rest of the registry.
+minimumReleaseAgeExclude:
+  - '@iconify-json/lucide@1.2.133'

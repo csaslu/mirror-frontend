@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Mirror directories are served by the Go backend behind this frontend.
+Sitemap: /sitemap.xml

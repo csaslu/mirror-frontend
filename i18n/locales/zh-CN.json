@@ -1,0 +1,162 @@
+{
+  "site": {
+    "name": "上海立达学院开源镜像站",
+    "shortName": "立达镜像",
+    "tagline": "面向校园网的开源软件镜像服务",
+    "description": "上海立达学院开源镜像站，提供 Ubuntu、Debian、PyPI、Docker 等常用开源软件的镜像加速与按需缓存服务。",
+    "operator": "通信与软件协会",
+    "university": "上海立达学院"
+  },
+  "nav": {
+    "mirrors": "镜像列表",
+    "help": "使用帮助",
+    "status": "同步状态",
+    "news": "公告",
+    "about": "关于"
+  },
+  "home": {
+    "title": "镜像列表",
+    "searchPlaceholder": "搜索镜像名称或描述",
+    "searchHint": "按 / 搜索",
+    "searchEmpty": "没有匹配「{query}」的镜像",
+    "clearSearch": "清除搜索",
+    "filterAll": "全部",
+    "filterByType": "按类型筛选",
+    "updatedAt": "数据获取于 {time}",
+    "autoRefresh": "每 {seconds} 秒自动刷新",
+    "refreshNow": "立即刷新",
+    "showingCount": "显示 {shown} / {total} 个镜像",
+    "refreshing": "正在刷新"
+  },
+  "table": {
+    "name": "名称",
+    "description": "描述",
+    "category": "类别",
+    "size": "大小",
+    "lastSync": "最后同步",
+    "status": "同步状态",
+    "actions": "操作",
+    "expand": "展开详情",
+    "collapse": "收起详情"
+  },
+  "mirror": {
+    "browse": "浏览文件",
+    "copyUrl": "复制地址",
+    "copied": "已复制",
+    "copyFailed": "复制失败，请手动复制",
+    "openSource": "访问上游",
+    "key": "目录名",
+    "source": "上游地址",
+    "size": "占用空间",
+    "lastSync": "最后同步",
+    "sizeUnknown": "未知",
+    "syncUnknown": "暂无数据"
+  },
+  "browser": {
+    "title": "目录浏览",
+    "entries": "共 {count} 个条目",
+    "empty": "该目录为空",
+    "parent": "返回上级",
+    "upstream": "上游原始页面",
+    "fetchedAt": "读取于 {time}",
+    "copyLink": "复制链接",
+    "copied": "链接已复制",
+    "openFile": "下载文件",
+    "sortHint": "点击表头排序",
+    "unavailableTitle": "上游没有返回可解析的目录列表",
+    "unavailableHint": "该路径可能是文件、上游关闭了目录浏览，或使用了我们尚未支持的目录格式。你可以直接打开上游页面查看。",
+    "backToList": "返回镜像列表",
+    "root": "根目录",
+    "syncingHint": "上游正在同步，内容可能不完整",
+    "fileCount": "文件",
+    "directoryCount": "目录",
+    "sortName": "名称",
+    "sortSize": "大小",
+    "sortTime": "修改时间",
+    "parser": "解析方式",
+    "enterDirectory": "打开目录",
+    "loading": "正在读取目录"
+  },
+  "fileTable": {
+    "name": "名称",
+    "size": "大小",
+    "modified": "修改时间",
+    "kind": "类型",
+    "directory": "目录",
+    "file": "文件"
+  },
+  "status": {
+    "label": "同步状态",
+    "success": "同步成功",
+    "syncing": "同步中",
+    "failed": "同步失败",
+    "paused": "已暂停",
+    "pre-syncing": "预同步",
+    "disabled": "已禁用",
+    "unknown": "未知",
+    "successHint": "上游已完成最近一次同步",
+    "syncingHint": "上游正在同步该镜像，数据可能不完整",
+    "failedHint": "上游最近一次同步失败，正在重试",
+    "pausedHint": "上游已暂停同步该镜像",
+    "pre-syncingHint": "上游正在预同步该镜像",
+    "disabledHint": "上游已禁用该镜像",
+    "unknownHint": "暂时无法从上游获取该镜像的同步状态"
+  },
+  "type": {
+    "label": "类别",
+    "reverse_proxy": "反向代理",
+    "rsync": "rsync 同步",
+    "http": "HTTP 镜像",
+    "https": "HTTPS 镜像",
+    "ftp": "FTP 镜像",
+    "s3": "对象存储",
+    "reverse_proxyHint": "按需缓存：首次访问时从上游拉取并缓存到本地",
+    "rsyncHint": "通过 rsync 协议同步",
+    "httpHint": "通过 HTTP 协议提供",
+    "httpsHint": "通过 HTTPS 协议提供",
+    "ftpHint": "通过 FTP 协议提供",
+    "s3Hint": "由对象存储提供"
+  },
+  "state": {
+    "loading": "正在加载镜像列表",
+    "error": "镜像列表加载失败",
+    "errorHint": "无法连接到镜像服务器，请稍后重试。",
+    "retry": "重试",
+    "empty": "镜像列表为空",
+    "emptyHint": "管理员尚未添加任何镜像源。"
+  },
+  "settings": {
+    "languageSwitch": "切换语言",
+    "theme": "主题",
+    "themeLight": "浅色",
+    "themeDark": "深色",
+    "themeSystem": "跟随系统",
+    "language": "语言"
+  },
+  "a11y": {
+    "skipToContent": "跳到主要内容",
+    "sortBy": "按{column}排序",
+    "statusDot": "状态指示"
+  },
+  "time": {
+    "justNow": "刚刚",
+    "secondsAgo": "{n} 秒前",
+    "minutesAgo": "{n} 分钟前",
+    "hoursAgo": "{n} 小时前",
+    "daysAgo": "{n} 天前",
+    "monthsAgo": "{n} 个月前",
+    "yearsAgo": "{n} 年前",
+    "never": "从未同步",
+    "unknown": "未知",
+    "absoluteHint": "{time}"
+  },
+  "size": {
+    "bytes": "{n} B",
+    "kb": "{n} KB",
+    "mb": "{n} MB",
+    "gb": "{n} GB",
+    "tb": "{n} TB",
+    "pb": "{n} PB",
+    "unknown": "未知"
+  }
+}

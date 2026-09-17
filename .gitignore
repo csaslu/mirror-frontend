@@ -3,10 +3,10 @@
 #
 # Recommended template: Node.gitignore
 
-# TODO: where does this rule come from?
+.output
+
 docs/_book
 
-# TODO: where does this rule come from?
 test/
 
 # ---> Node
