@@ -35,6 +35,11 @@ const items = computed(() =>
   ).filter((item) => props.summary[item.tone] > 0),
 )
 
+/** The syncing counter gets a spinning icon, matching the badges in the table. */
+function spins(tone: keyof typeof props.summary): boolean {
+  return tone === 'progress'
+}
+
 const TONE_TEXT: Record<string, string> = {
   success: 'text-emerald-600 dark:text-emerald-400',
   progress: 'text-sky-600 dark:text-sky-400',
@@ -70,7 +75,12 @@ const TONE_TEXT: Record<string, string> = {
       class="inline-flex items-center gap-1.5"
       :title="item.label"
     >
-      <Icon :name="item.icon" class="size-4" :class="TONE_TEXT[item.tone]" aria-hidden="true" />
+      <Icon
+        :name="item.icon"
+        class="size-4"
+        :class="[TONE_TEXT[item.tone], spins(item.tone) ? 'animate-spin' : '']"
+        aria-hidden="true"
+      />
       <span class="font-semibold tabular-nums text-slate-800 dark:text-slate-200">
         {{ summary[item.tone] }}
       </span>
