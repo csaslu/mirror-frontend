@@ -53,21 +53,34 @@ export function useMirrors() {
     }
   }
 
+  /**
+   * True before any list has been obtained, including the first client render
+   * where the fetch status is still 'idle'.
+   *
+   * The page must branch on this *before* checking for an empty list: an empty
+   * array and "we have not loaded anything yet" are different states, and
+   * rendering the latter as "no mirrors configured" is what made the homepage
+   * flash that message under a slow connection.
+   *
+   * A background refresh does not set it, because the previous list is still on
+   * screen.
+   */
+  const loading = computed(() => data.value === undefined)
+
   return {
     mirrors,
     fetchedAt,
     refreshInFlight,
     error,
+    /** No list has arrived yet: render a placeholder, not an empty state. */
+    loading,
+    /** The request failed and there is nothing to show. */
+    unavailable: computed(() => Boolean(error.value) && data.value === undefined),
     /**
-     * True until a list is available to render.
-     *
-     * Not simply `status === 'pending'`: on the very first client render the
-     * status is still 'idle', and treating that as "loaded" renders the counts
-     * before the data exists — which is what made the hero jump when a fast
-     * response landed. A background refresh does not set this, because the
-     * previous list is still on screen.
+     * True while a request is in flight (a background refresh included). Drives
+     * the "refreshing" affordance, not the page's main state.
      */
-    pending: computed(() => status.value === 'pending' || data.value === undefined),
+    pending: computed(() => status.value === 'pending'),
     reload,
   }
 }

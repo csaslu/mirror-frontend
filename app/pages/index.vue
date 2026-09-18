@@ -12,7 +12,7 @@ import type { Mirror } from '~/types/mirror'
 const { t, locale } = useI18n()
 const config = useRuntimeConfig()
 
-const { mirrors, fetchedAt, refreshInFlight, error, pending, reload } = useMirrors()
+const { mirrors, fetchedAt, refreshInFlight, loading, unavailable, reload } = useMirrors()
 
 // Poll while the tab is visible so sync status stays current (see composable).
 useMirrorPolling(reload, Number(config.public.refreshInterval))
@@ -128,12 +128,12 @@ useSeoMeta({
           counters for same-sized placeholders instead of removing the row.
         -->
         <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
-          <StatusSummary :summary="summary" :total="mirrors.length" :loading="pending" />
+          <StatusSummary :summary="summary" :total="mirrors.length" :loading="loading" />
 
           <span class="hidden h-4 w-px bg-slate-300 sm:block dark:bg-slate-700" aria-hidden="true" />
 
           <ClientOnly>
-            <div v-if="!pending" class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+            <div v-if="!loading" class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
               <Icon
                 name="lucide:refresh-cw"
                 class="size-3.5"
@@ -226,8 +226,16 @@ useSeoMeta({
           whether the list is still loading.
         -->
         <ClientOnly>
+          <!--
+            Loading is tested first: until a list arrives, `hasMirrors` is false,
+            and branching on that showed "no mirrors configured" for as long as
+            the request took (clearly visible on a slow connection) before the
+            rows appeared.
+          -->
+          <MirrorTableSkeleton v-if="loading" :rows="8" />
+
           <StateMessage
-            v-if="error && !hasMirrors"
+            v-else-if="unavailable"
             icon="lucide:wifi-off"
             tone="danger"
             :title="t('state.error')"
