@@ -59,7 +59,13 @@ function mirrorUrl(key: string): string {
 </script>
 
 <template>
-  <div class="overflow-x-auto scrollbar-thin">
+  <!--
+    `min-w-0 w-full` is load-bearing: this is a flex/grid item, and the
+    default `min-width: auto` lets it grow to the table's min-width, so the
+    overflow never engages — the page itself gets wider and a phone renders
+    the whole layout at a shrunken zoom level.
+  -->
+  <div class="w-full min-w-0 overflow-x-auto scrollbar-thin">
     <table class="w-full min-w-[46rem] border-collapse text-sm">
       <caption class="sr-only">{{ t('home.title') }}</caption>
 

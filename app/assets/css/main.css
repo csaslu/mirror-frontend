@@ -35,6 +35,19 @@
   html {
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
+
+    /*
+     * The tables are wider than a phone and scroll inside their own container,
+     * but the browser still counts that overflow as scrollable area on the root
+     * element. On a phone that surface widens the layout viewport: the page then
+     * renders at a shrunken zoom level and the visitor can pinch out past the
+     * screen width.
+     *
+     * Clipping on the root element removes the surface (clipping on body does
+     * not — the widening happens above it), while the tables keep their own
+     * horizontal scrolling.
+     */
+    overflow-x: hidden;
   }
 
   body {

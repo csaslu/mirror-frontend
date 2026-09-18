@@ -20,7 +20,7 @@ const sourceUrl = 'https://github.com/csaslu'
         <!-- Who supports and runs the mirror -->
         <div class="max-w-3xl space-y-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
           <p>
-            上海立达学院开源软件镜像由上海立达学院图文信息中心提供支持，由上海立达学院通信与软件协会运行维护。
+            上海立达学院开源软件镜像站由上海立达学院图文信息中心提供支持，由上海立达学院通信与软件协会运行维护。
           </p>
 
           <p>mirrors.csaslu.com 为立达校内提供了高速的开源软件下载服务。</p>

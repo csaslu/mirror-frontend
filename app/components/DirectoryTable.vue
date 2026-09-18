@@ -111,15 +111,23 @@ async function copyLink(entry: DirectoryEntry) {
 </script>
 
 <template>
-  <div class="overflow-x-auto scrollbar-thin">
-    <table class="w-full min-w-[32rem] border-collapse text-sm">
+  <!--
+    No horizontal scrolling on purpose. A table with a minimum width wider than
+    a phone makes the browser widen the *layout* viewport to fit it, and the page
+    then renders at a shrunken zoom level that the visitor can pinch out past the
+    screen edge. `table-fixed` gives the columns fixed shares of whatever width
+    is available, so there is nothing to overflow; long file names are truncated
+    with the full value in the `title`.
+  -->
+  <div class="w-full min-w-0">
+    <table class="w-full table-fixed border-collapse text-sm">
       <caption class="sr-only">{{ t('browser.title') }}</caption>
 
       <thead>
         <tr
           class="border-b border-slate-200 text-left text-xs font-semibold tracking-wide text-slate-500 uppercase dark:border-slate-800 dark:text-slate-400"
         >
-          <th scope="col" class="px-4 py-3">
+          <th scope="col" class="w-auto px-4 py-3">
             <button
               type="button"
               class="inline-flex items-center gap-1 hover:text-slate-900 dark:hover:text-slate-200"
@@ -130,7 +138,7 @@ async function copyLink(entry: DirectoryEntry) {
               <Icon :name="sortIcon('name')" class="size-3.5" aria-hidden="true" />
             </button>
           </th>
-          <th scope="col" class="px-4 py-3 text-right whitespace-nowrap">
+          <th scope="col" class="w-20 px-3 py-3 text-right whitespace-nowrap sm:w-24 sm:px-4">
             <button
               type="button"
               class="inline-flex items-center gap-1 hover:text-slate-900 dark:hover:text-slate-200"
@@ -141,7 +149,7 @@ async function copyLink(entry: DirectoryEntry) {
               <Icon :name="sortIcon('size')" class="size-3.5" aria-hidden="true" />
             </button>
           </th>
-          <th scope="col" class="px-4 py-3 whitespace-nowrap">
+          <th scope="col" class="w-28 px-3 py-3 whitespace-nowrap sm:w-40 sm:px-4">
             <button
               type="button"
               class="inline-flex items-center gap-1 hover:text-slate-900 dark:hover:text-slate-200"
@@ -152,7 +160,7 @@ async function copyLink(entry: DirectoryEntry) {
               <Icon :name="sortIcon('mod_time')" class="size-3.5" aria-hidden="true" />
             </button>
           </th>
-          <th scope="col" class="px-4 py-3 text-right">
+          <th scope="col" class="w-16 px-2 py-3 text-right sm:w-24 sm:px-4">
             <span class="sr-only">{{ t('table.actions') }}</span>
           </th>
         </tr>
@@ -160,8 +168,8 @@ async function copyLink(entry: DirectoryEntry) {
 
       <tbody>
         <tr v-for="entry in sorted" :key="entry.url" class="group border-b border-slate-100 dark:border-slate-800/70">
-          <td class="px-4 py-3">
-            <div class="flex items-center gap-2.5">
+          <td class="px-3 py-3 sm:px-4">
+            <div class="flex min-w-0 items-center gap-2.5">
               <Icon
                 :name="iconFor(entry)"
                 class="size-4 shrink-0"
@@ -171,10 +179,13 @@ async function copyLink(entry: DirectoryEntry) {
 
               <!-- Directories and files share the same visible style; only the
                    icon and the trailing slash differ, as on upstream listings. -->
+              <!-- `truncate` needs a block-level box for the ellipsis to appear,
+                   and the fixed layout gives the cell a width it can truncate to. -->
               <a
                 v-if="entry.kind === 'file'"
                 :href="entry.url"
-                class="truncate font-mono text-slate-800 hover:text-brand-600 hover:underline dark:text-slate-200 dark:hover:text-brand-400"
+                class="min-w-0 flex-1 truncate font-mono text-slate-800 hover:text-brand-600 hover:underline dark:text-slate-200 dark:hover:text-brand-400"
+                :title="entry.name"
                 download
               >
                 {{ entry.name }}
@@ -182,22 +193,23 @@ async function copyLink(entry: DirectoryEntry) {
               <NuxtLink
                 v-else
                 :to="entry.url.replace(/^\//, '/mirror/')"
-                class="truncate font-mono font-medium text-slate-900 hover:text-brand-600 dark:text-slate-100 dark:hover:text-brand-400"
+                class="min-w-0 flex-1 truncate font-mono font-medium text-slate-900 hover:text-brand-600 dark:text-slate-100 dark:hover:text-brand-400"
+                :title="entry.name"
               >
                 {{ entry.name }}/
               </NuxtLink>
             </div>
           </td>
 
-          <td class="px-4 py-3 text-right font-mono text-xs whitespace-nowrap text-slate-600 tabular-nums dark:text-slate-400">
+          <td class="px-3 py-3 text-right font-mono text-xs whitespace-nowrap text-slate-600 tabular-nums sm:px-4 dark:text-slate-400">
             {{ sizeText(entry) }}
           </td>
 
-          <td class="px-4 py-3 font-mono text-xs whitespace-nowrap text-slate-600 dark:text-slate-400">
+          <td class="px-3 py-3 font-mono text-xs whitespace-nowrap text-slate-600 sm:px-4 dark:text-slate-400">
             {{ timeText(entry) }}
           </td>
 
-          <td class="px-4 py-3">
+          <td class="px-2 py-3 sm:px-4">
             <div class="flex items-center justify-end gap-1 opacity-0 transition-opacity group-hover:opacity-100 focus-within:opacity-100">
               <a
                 v-if="entry.kind === 'file'"
